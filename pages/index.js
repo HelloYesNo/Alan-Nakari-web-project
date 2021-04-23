@@ -14,18 +14,20 @@ export default function Home() {
   console.log("users", users);
 
   return (
-    <div className="bg-yellow-400">
+    <div className="m-10">
       <Head>
         <title>Next.js Starter!</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        {users === null
+        <Card />
+
+        {/* {users === null
           ? "loading..."
           : users.map((user, index) => (
               <Card key={index} title={user.first_name} />
-            ))}
+            ))} */}
       </main>
     </div>
   );
