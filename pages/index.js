@@ -20,14 +20,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Card />
-
-        {/* {users === null
+      <main className="max-w-4xl mx-auto grid grid-cols-3 gap-y-3 gap-x-8">
+        {users === null
           ? "loading..."
           : users.map((user, index) => (
-              <Card key={index} title={user.first_name} />
-            ))} */}
+              <Card
+                key={index}
+                firstName={user.first_name}
+                lastName={user.last_name}
+                imgSrc={user.avatar}
+              />
+            ))}
       </main>
     </div>
   );

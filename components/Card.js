@@ -1,13 +1,17 @@
-export default function Card({ title }) {
-  // todo: first, last, image, username (@ + first + last)
+export default function Card({ firstName, lastName, imgSrc }) {
   return (
-    <div className="p-5 border border-gray-200 rounded-3xl w-max space-y-3">
+    <div className="p-5 border border-gray-200 rounded-3xl space-y-3">
       <img
-        className="w-24 mx-auto rounded-full"
-        src="https://yt3.ggpht.com/ytc/AAUvwngqtTOfBOr4W_rGcOt2LANtJEDa90I-S_C5sjKCRg=s900-c-k-c0x00ffffff-no-rj"
+        className="w-24 h-24 object-cover mx-auto rounded-full"
+        src={imgSrc}
       />
-      <h3 className="text-2xl text-center font-bold">Alan Nakari</h3>
-      <p className="text-center text-gray-500">@helloyesgo</p>
+      <h3 className="text-2xl text-center font-bold">
+        {firstName} {lastName}
+      </h3>
+      <p className="text-center text-gray-500 lowercase">
+        @{firstName}
+        {lastName}
+      </p>
     </div>
   );
 }
