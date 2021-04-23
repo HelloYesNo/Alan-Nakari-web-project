@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Card from "@components/Card";
 
-export default function Home() {
+export default function Users() {
   const [users, setUsers] = useState(null);
 
   useEffect(async () => {
