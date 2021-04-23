@@ -6,7 +6,9 @@ export default function Home() {
   const [users, setUsers] = useState(null);
 
   useEffect(async () => {
-    const response = await fetch("http://localhost:3000/api/users");
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`
+    );
     const data = await response.json();
     setUsers(data);
   }, []);
