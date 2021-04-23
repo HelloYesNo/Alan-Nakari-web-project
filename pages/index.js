@@ -28,8 +28,8 @@ export default function Users() {
           : users.map((user, index) => (
               <Card
                 key={index}
-                firstName={user.first_name}
-                lastName={user.last_name}
+                firstName={user.firstName}
+                lastName={user.lastName}
                 imgSrc={user.avatar}
               />
             ))}
