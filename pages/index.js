@@ -6,9 +6,7 @@ export default function Users() {
   const [users, setUsers] = useState(null);
 
   useEffect(async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`
-    );
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users/`);
     const data = await response.json();
     setUsers(data);
   }, []);
@@ -28,9 +26,10 @@ export default function Users() {
           : users.map((user, index) => (
               <Card
                 key={index}
-                firstName={user.firstName}
-                lastName={user.lastName}
-                imgSrc={user.avatar}
+                name={user.name}
+                username={user.username}
+                website={user.website}
+                id={user.id}
               />
             ))}
       </main>

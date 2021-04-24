@@ -7,13 +7,12 @@ import Link from "next/link";
 export default function User() {
   const router = useRouter();
   const query = router.query;
+  const baseUrl = "https://jsonplaceholder.typicode.com";
   const [user, setUser] = useState(null);
 
   useEffect(async () => {
-    if (query.username) {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/user?username=${query.username}`
-      );
+    if (query.id) {
+      const response = await fetch(`${baseUrl}/users/${query.id}`); // itt volt a hiba
       const data = await response.json();
       setUser(data);
     }
@@ -42,9 +41,11 @@ export default function User() {
         </a>
       </Link>
       <Card
-        firstName={user.firstName}
-        lastName={user.lastName}
-        imgSrc={user.avatar}
+        details // ugyanaz mint details={true}
+        name={user.name}
+        username={user.username}
+        website={user.website}
+        id={user.id}
       />
     </main>
   );

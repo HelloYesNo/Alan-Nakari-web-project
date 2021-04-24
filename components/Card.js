@@ -1,27 +1,29 @@
 import Link from "next/link";
 import Button from "./Button";
-import { getUsername } from "../users";
 
 export default function Card(user) {
-  const username = getUsername(user);
-  const { firstName, lastName, imgSrc } = user;
+  const { name, username, website, id, details = false } = user;
   return (
     <div className="p-5 border border-gray-200 rounded-3xl space-y-3">
-      <img
-        className="w-24 h-24 object-cover mx-auto rounded-full"
-        src={imgSrc}
-      />
-      <h3 className="text-2xl text-center font-bold">
-        {firstName} {lastName}
-      </h3>
-      <p className="text-center text-gray-500 lowercase">@{username}</p>
-      <div className="text-center">
-        <Link href={`/user/${encodeURIComponent(username)}`}>
-          <a>
-            <Button>Enter {firstName}</Button>
-          </a>
-        </Link>
+      <div className="bg-gray-400 rounded-full h-24 w-24 flex items-center justify-center mx-auto">
+        <h1 className="text-white text-4xl font-bold">{id}</h1>
       </div>
+      <h3 className="text-2xl text-center font-bold">{name}</h3>
+      <p className="text-center text-gray-500 lowercase">@{username}</p>
+      <p className="text-center text-blue-400">
+        <a href={`https://${website}`} target="_blank">
+          {website}
+        </a>
+      </p>
+      {details || (
+        <div className="text-center">
+          <Link href={`/users/${encodeURIComponent(user.id)}`}>
+            <a>
+              <Button>Detailed info</Button>
+            </a>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
