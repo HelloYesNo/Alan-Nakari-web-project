@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Card from "@components/Card";
+import Loading from "@components/Loading";
 
 export default function Users() {
   const [users, setUsers] = useState(null);
@@ -11,27 +12,28 @@ export default function Users() {
     setUsers(data);
   }, []);
 
-  console.log("users", users);
-
   return (
     <div className="m-10">
       <Head>
-        <title>Next.js Starter!</title>
+        <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="max-w-4xl mx-auto grid grid-cols-3 gap-y-3 gap-x-8">
-        {users === null
-          ? "loading..."
-          : users.map((user, index) => (
-              <Card
-                key={index}
-                name={user.name}
-                username={user.username}
-                website={user.website}
-                id={user.id}
-              />
-            ))}
+      {/* Main screen cards */}
+      <main className="max-w-4xl mx-auto grid grid-cols-3 gap-y-6 gap-x-14">
+        {users === null ? (
+          <Loading>Loading page...</Loading>
+        ) : (
+          users.map((user, index) => (
+            <Card
+              details
+              key={index}
+              name={user.name}
+              username={user.username}
+              website={user.website}
+              id={user.id}
+            />
+          ))
+        )}
       </main>
     </div>
   );
